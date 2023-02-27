@@ -1,4 +1,5 @@
 <?php 
+include_once('includes/cors.php');
 include_once('includes/host.php');
 if(isset($_POST['site_name'])){
 $site_name = $_POST['site_name'];
