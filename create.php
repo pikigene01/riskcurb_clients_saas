@@ -3,20 +3,10 @@
 include('includes/cors.php');
 include('includes/host.php');
 
-$message = "error creating new database";
-exit(json_encode(
-    array(
-        'status' => 400,
-        'message' => $_POST
-
-    )
-
-));
-if (isset($_POST['site_name'])) {
- 
-    $site_name = $_POST['site_name'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password']; //bycrypted password sent
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $site_name = $_REQUEST['site_name'];
+    $user_email = $_REQUEST['email'];
+    $user_password = $_REQUEST['password']; //bycrypted password sent
     $con = new mysqli($host, $user, $password);
 
     $create = $con->query("CREATE DATABASE $site_name");
